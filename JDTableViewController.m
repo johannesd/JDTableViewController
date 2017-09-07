@@ -164,6 +164,7 @@ NSIndexSet* JDRemovedSections(NSObject *self, NSMutableDictionary *currentSectio
     for (JDTableViewControllerModule *module in modules) {
         [module tableViewWillReload:tableView];
     }
+    [moduleForSections removeAllObjects];
 }
 
 - (void)jd_TableViewController_tableViewDidReload:(UITableView *)tableView
@@ -367,6 +368,15 @@ NSIndexSet* JDRemovedSections(NSObject *self, NSMutableDictionary *currentSectio
     return [super tableView:tableView heightForRowAtIndexPath:indexPath];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    JDTableViewControllerModule *module = [self moduleAtSection:indexPath.section];
+    if (module != nil) {
+        return [module tableView:tableView estimatedHeightForRowAtIndexPath:indexPath];
+    }
+    return [super tableView:tableView heightForRowAtIndexPath:indexPath];
+}
+
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
 {
     JDTableViewControllerModule *module = [self moduleAtSection:section];
@@ -393,6 +403,15 @@ NSIndexSet* JDRemovedSections(NSObject *self, NSMutableDictionary *currentSectio
     }
 }
 
+- (NSIndexPath *)tableView:(UITableView *)tableView willDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    JDTableViewControllerModule *module = [self moduleAtSection:indexPath.section];
+    if (module != nil) {
+        return [module tableView:tableView willDeselectRowAtIndexPath:indexPath];
+    }
+    return indexPath;
+}
+
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     JDTableViewControllerModule *module = [self moduleAtSection:indexPath.section];
@@ -409,6 +428,24 @@ NSIndexSet* JDRemovedSections(NSObject *self, NSMutableDictionary *currentSectio
         return [module tableView:tableView commitEditingStyle:editingStyle forRowAtIndexPath:indexPath];
     }
     return [super tableView:tableView commitEditingStyle:editingStyle forRowAtIndexPath:indexPath];
+}
+
+- (void)tableView:(UITableView *)tableView willBeginEditingRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    JDTableViewControllerModule *module = [self moduleAtSection:indexPath.section];
+    if (module != nil) {
+        return [module tableView:tableView willBeginEditingRowAtIndexPath:indexPath];
+    }
+    return [super tableView:tableView willBeginEditingRowAtIndexPath:indexPath];
+}
+
+- (void)tableView:(UITableView *)tableView didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    JDTableViewControllerModule *module = [self moduleAtSection:indexPath.section];
+    if (module != nil) {
+        return [module tableView:tableView didEndEditingRowAtIndexPath:indexPath];
+    }
+    return [super tableView:tableView didEndEditingRowAtIndexPath:indexPath];
 }
 
 @end

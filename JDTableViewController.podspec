@@ -3,6 +3,7 @@ Pod::Spec.new do |s|
   s.version      = "0.0.1"
   s.summary      = "JDTableViewController"
   s.description  = <<-DESC
+    JDTableViewController
                    DESC
   s.homepage     = "https://github.com/johannesd/JDTableViewController.git"
   s.license      = { 
@@ -15,6 +16,7 @@ Pod::Spec.new do |s|
     LICENSE
   }
   s.author       = { "Johannes Doerr" => "mail@johannesdoerr.de" }
+  s.source       = { :git => "https://github.com/johannesd/JDTableViewController.git" }
   s.platform     = :ios, '5.0'
   s.source_files  = '*.{h,m}'
 
