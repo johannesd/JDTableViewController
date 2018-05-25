@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "JDTableViewController"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "JDTableViewController"
   s.description  = <<-DESC
     JDTableViewController
@@ -23,7 +23,7 @@ Pod::Spec.new do |s|
   s.exclude_files = 'Classes/Exclude'
   s.requires_arc = true
 
-  s.dependency 'JDCategories', '~> 0.0.1'
-  s.dependency 'JDUIUpdates', '~> 0.0.1'
+  s.dependency 'JDCategories'
+  s.dependency 'JDUIUpdates'
 
 end
