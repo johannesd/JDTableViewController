@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "JDTableViewController"
-  s.version      = "0.0.2"
+  s.version      = "0.0.3"
   s.summary      = "JDTableViewController"
   s.description  = <<-DESC
     JDTableViewController
@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
   }
   s.author       = { "Johannes Doerr" => "mail@johannesdoerr.de" }
   s.source       = { :git => "https://github.com/johannesd/JDTableViewController.git" }
-  s.platform     = :ios, '5.0'
+  s.platform     = :ios, '8.0'
   s.source_files  = '*.{h,m}'
 
   s.exclude_files = 'Classes/Exclude'
